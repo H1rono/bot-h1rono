@@ -12,18 +12,18 @@ func main() {
 
 	handlers := traqbot.EventHandlers{}
 	handlers.SetJoinedHandler(func(payload *traqbot.JoinedPayload) {
-		log.Println("=================================================")
-		log.Println("チャンネルに参加しました。")
-		log.Printf("チャンネル名: %s\n", payload.Channel.Name)
-		log.Printf("チャンネルID: %s\n", payload.Channel.ID)
-		log.Println("=================================================")
+		fmt.Println("=================================================")
+		fmt.Println("チャンネルに参加しました。")
+		fmt.Printf("チャンネル名: %s\n", payload.Channel.Name)
+		fmt.Printf("チャンネルID: %s\n", payload.Channel.ID)
+		fmt.Println("=================================================")
 	})
 	handlers.SetMessageCreatedHandler(func(payload *traqbot.MessageCreatedPayload) {
-		log.Println("=================================================")
-		log.Printf("%sさんがメッセージを投稿しました。\n", payload.Message.User.DisplayName)
-		log.Println("メッセージ：")
-		log.Println(payload.Message.Text)
-		log.Println("=================================================")
+		fmt.Println("=================================================")
+		fmt.Printf("%sさんがメッセージを投稿しました。\n", payload.Message.User.DisplayName)
+		fmt.Println("メッセージ：")
+		fmt.Println(payload.Message.Text)
+		fmt.Println("=================================================")
 	})
 
 	server := traqbot.NewBotServer(vt, handlers)
