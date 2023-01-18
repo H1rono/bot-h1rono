@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	"log"
 	"os"
+
+	log "github.com/sirupsen/logrus"
 
 	traq "github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
