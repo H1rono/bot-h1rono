@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 
@@ -16,12 +15,6 @@ func main() {
 
 	client := traq.NewAPIClient(traq.NewConfiguration())
 	auth := context.WithValue(context.Background(), traq.ContextAccessToken, at)
-
-	v, _, _ := client.ChannelApi.
-		GetChannels(auth).
-		IncludeDm(true).
-		Execute()
-	fmt.Printf("%#v", v)
 
 	handlers := traqbot.EventHandlers{}
 	bot := NewBot(client, auth)
