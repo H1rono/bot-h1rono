@@ -53,8 +53,9 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	log.Printf("メッセージID: %s\n", payload.Message.ID)
 	log.Printf("内容: %s\n", payload.Message.Text)
 	log.Println("=================================================")
+	// :eyes_chuukunn:を押す
 	bot.client.MessageApi.
-		AddMessageStamp(bot.auth, payload.Message.ID, "05f9b2b0-b2c7-4c48-8fd1-c68daaa23103").
+		AddMessageStamp(bot.auth, payload.Message.ID, "ca76e807-ca02-463a-bf97-4339bc5f305b").
 		PostMessageStampRequest(*traq.NewPostMessageStampRequest(1)).
 		Execute()
 }
