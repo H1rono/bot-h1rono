@@ -24,20 +24,11 @@ func main() {
 	fmt.Printf("%#v", v)
 
 	handlers := traqbot.EventHandlers{}
-	handlers.SetJoinedHandler(func(payload *traqbot.JoinedPayload) {
-		fmt.Println("=================================================")
-		fmt.Println("チャンネルに参加しました。")
-		fmt.Printf("チャンネル名: %s\n", payload.Channel.Name)
-		fmt.Printf("チャンネルID: %s\n", payload.Channel.ID)
-		fmt.Println("=================================================")
-	})
-	handlers.SetMessageCreatedHandler(func(payload *traqbot.MessageCreatedPayload) {
-		fmt.Println("=================================================")
-		fmt.Printf("%sさんがメッセージを投稿しました。\n", payload.Message.User.DisplayName)
-		fmt.Println("メッセージ：")
-		fmt.Println(payload.Message.Text)
-		fmt.Println("=================================================")
-	})
+	bot := NewBot(client, auth)
+	handlers.SetPingHandler(bot.PingHandler)
+	handlers.SetJoinedHandler(bot.JoinHandler)
+	handlers.SetLeftHandler(bot.LeftHandler)
+	handlers.SetMessageCreatedHandler(bot.MessageCreatedHandler)
 
 	server := traqbot.NewBotServer(vt, handlers)
 	log.Fatal(server.ListenAndServe(":8080"))
