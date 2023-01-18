@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	vt := os.Getenv("VERIFICATION_TOKEN")
+	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
 
 	handlers := traqbot.EventHandlers{}
 	handlers.SetMessageCreatedHandler(func(payload *traqbot.MessageCreatedPayload) {
