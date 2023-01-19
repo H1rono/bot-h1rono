@@ -61,11 +61,35 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	log.Infof("メッセージID: %s\n", payload.Message.ID)
 	log.Infof("内容: %s\n", payload.Message.Text)
 	log.Infof("埋め込み: %v\n", payload.Message.Embedded)
+	m := &payload.Message
+	t := bot.JudgeMessageType(m)
+	switch t {
+	case MESSAGE_NORMAL:
+		bot.HandleNormalMessage(m)
+	case MESSAGE_JOIN:
+		bot.HandleJoinMessage(m)
+	case MESSAGE_LEAVE:
+		bot.HandleLeaveMessage(m)
+	case MESSAGE_PING:
+		bot.HandlePingMessage(m)
+	case MESSAGE_MENTIONED:
+		bot.HandleMentionMessage(m)
+	}
 	// :kidoku:を押す
 	bot.client.MessageApi.
 		AddMessageStamp(bot.auth, payload.Message.ID, "aa9d4808-de1a-400d-9ab2-6db66fcd5bc7").
 		PostMessageStampRequest(*traq.NewPostMessageStampRequest(1)).
 		Execute()
 }
+
+func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {}
+
+func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {}
+
+func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {}
+
+func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {}
+
+func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {}
 
 /* --- ここまでメッセージ系のイベントたち --- */
