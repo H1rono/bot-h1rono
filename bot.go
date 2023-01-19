@@ -59,7 +59,7 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	log.Infof("%sさんがメッセージを投稿しました。\n", payload.Message.User.DisplayName)
 	log.Infof("メッセージID: %s\n", payload.Message.ID)
-	log.Infof("内容: %s\n", payload.Message.Text)
+	log.Infof("内容: %s\n", payload.Message.PlainText)
 	log.Infof("埋め込み: %v\n", payload.Message.Embedded)
 	m := &payload.Message
 	t := bot.JudgeMessageType(m)
