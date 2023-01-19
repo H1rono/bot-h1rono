@@ -12,7 +12,7 @@ import (
 type Bot struct {
 	client      *traq.APIClient
 	auth        context.Context
-	botId       string
+	id          string
 	userId      string
 	verifToken  string
 	accessToken string
@@ -82,14 +82,36 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 		Execute()
 }
 
-func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {}
+func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
+	log.Info("HandleNormalMessageでメッセージを処理")
+}
 
-func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {}
+func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
+	log.Info("HandleJoinMessageでメッセージを処理")
+	bot.client.BotApi.
+		LetBotJoinChannel(bot.auth, bot.id).
+		PostBotActionJoinRequest(*traq.NewPostBotActionJoinRequest(message.ChannelID)).
+		Execute()
+}
 
-func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {}
+func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
+	log.Info("HandleLeaveMessageでメッセージを処理")
+	bot.client.BotApi.
+		LetBotLeaveChannel(bot.auth, bot.id).
+		PostBotActionLeaveRequest(*traq.NewPostBotActionLeaveRequest(message.ChannelID)).
+		Execute()
+}
 
-func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {}
+func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
+	log.Info("HandlePingMessageでメッセージを処理")
+	bot.client.MessageApi.
+		PostMessage(bot.auth, message.ChannelID).
+		PostMessageRequest(*traq.NewPostMessageRequest("pong")).
+		Execute()
+}
 
-func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {}
+func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {
+	log.Info("HandleMentionMessageでメッセージを処理")
+}
 
 /* --- ここまでメッセージ系のイベントたち --- */
