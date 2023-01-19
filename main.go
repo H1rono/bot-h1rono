@@ -31,6 +31,7 @@ func main() {
 	default:
 		log.Fatalf("Unexpected environment variable LOG_LEVEL=%s", l)
 	}
+	log.Infof("log level is set at %s", l)
 
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
