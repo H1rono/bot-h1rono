@@ -19,6 +19,8 @@ func main() {
 	case "DEBUG":
 		log.SetLevel(log.DebugLevel)
 	case "INFO", "":
+		// l = "" の場合に後の出力が残念になるため
+		l = "INFO"
 		log.SetLevel(log.InfoLevel)
 	case "WARNING":
 		log.SetLevel(log.WarnLevel)
