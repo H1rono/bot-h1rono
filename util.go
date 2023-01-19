@@ -24,24 +24,15 @@ var (
 )
 
 func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
-	mentioned := false
-	for _, embedded := range message.Embedded {
-		if embedded.ID == bot.userId {
-			mentioned = true
-		}
-	}
-	if !mentioned {
-		return MESSAGE_NORMAL
-	}
-	if len(message.Embedded) > 1 {
-		return MESSAGE_MENTIONED
-	}
 	b := []byte(strings.ToLower(message.PlainText))
 	if JOIN_REGEXP.Match(b) {
 		return MESSAGE_JOIN
 	}
 	if LEAVE_REGEXP.Match(b) {
 		return MESSAGE_LEAVE
+	}
+	if PING_REGEXP.Match(b) {
+		return MESSAGE_PING
 	}
 	return MESSAGE_MENTIONED
 }
