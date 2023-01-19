@@ -1,12 +1,10 @@
 package main
 
 import (
-	"context"
 	"os"
 
 	log "github.com/sirupsen/logrus"
 
-	traq "github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
 )
 
@@ -35,14 +33,13 @@ func main() {
 	}
 	log.Infof("log level is set at %s", l)
 
+	bid := os.Getenv("BOT_ID")
+	uid := os.Getenv("BOT_USER_ID")
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
-
-	client := traq.NewAPIClient(traq.NewConfiguration())
-	auth := context.WithValue(context.Background(), traq.ContextAccessToken, at)
+	bot := NewBot(bid, uid, at, vt)
 
 	handlers := traqbot.EventHandlers{}
-	bot := NewBot(client, auth)
 	handlers.SetPingHandler(bot.PingHandler)
 	handlers.SetJoinedHandler(bot.JoinHandler)
 	handlers.SetLeftHandler(bot.LeftHandler)

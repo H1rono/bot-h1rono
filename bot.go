@@ -10,12 +10,18 @@ import (
 )
 
 type Bot struct {
-	client *traq.APIClient
-	auth   context.Context
+	client      *traq.APIClient
+	auth        context.Context
+	botId       string
+	userId      string
+	verifToken  string
+	accessToken string
 }
 
-func NewBot(client *traq.APIClient, auth context.Context) Bot {
-	return Bot{client, auth}
+func NewBot(botId string, userId string, accessToken string, verificationToken string) Bot {
+	client := traq.NewAPIClient(traq.NewConfiguration())
+	auth := context.WithValue(context.Background(), traq.ContextAccessToken, accessToken)
+	return Bot{client, auth, botId, userId, verificationToken, accessToken}
 }
 
 /* --- ここからシステム系のイベントたち --- */
