@@ -32,8 +32,8 @@ func (bot Bot) PingHandler(payload *traqbot.PingPayload) {
 
 func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 	log.Info("チャンネルに参加しました。")
-	log.Infof("チャンネル名: %s\n", payload.Channel.Name)
-	log.Infof("チャンネルID: %s\n", payload.Channel.ID)
+	log.Infof("チャンネル名: %s", payload.Channel.Name)
+	log.Infof("チャンネルID: %s", payload.Channel.ID)
 	msg := traq.NewPostMessageRequest(":oisu-1::oisu-2::oisu-3::oisu-4yoko:")
 	bot.client.MessageApi.
 		PostMessage(bot.auth, payload.Channel.ID).
@@ -43,8 +43,8 @@ func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 
 func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 	log.Info("チャンネルから退出しました。")
-	log.Infof("チャンネル名: %s\n", payload.Channel.Name)
-	log.Infof("チャンネルID: %s\n", payload.Channel.ID)
+	log.Infof("チャンネル名: %s", payload.Channel.Name)
+	log.Infof("チャンネルID: %s", payload.Channel.ID)
 	msg := traq.NewPostMessageRequest(":leave:d")
 	bot.client.MessageApi.
 		PostMessage(bot.auth, payload.Channel.ID).
@@ -57,10 +57,10 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 /* --- ここからメッセージ系のイベントたち --- */
 
 func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
-	log.Infof("%sさんがメッセージを投稿しました。\n", payload.Message.User.DisplayName)
-	log.Infof("メッセージID: %s\n", payload.Message.ID)
-	log.Infof("内容: %s\n", payload.Message.PlainText)
-	log.Infof("埋め込み: %v\n", payload.Message.Embedded)
+	log.Infof("%sさんがメッセージを投稿しました。", payload.Message.User.DisplayName)
+	log.Infof("メッセージID: %s", payload.Message.ID)
+	log.Infof("内容: %s", payload.Message.PlainText)
+	log.Infof("埋め込み: %v", payload.Message.Embedded)
 	m := &payload.Message
 	t := bot.JudgeMessageType(m)
 	switch t {
