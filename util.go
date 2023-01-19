@@ -34,5 +34,10 @@ func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 	if PING_REGEXP.Match(b) {
 		return MESSAGE_PING
 	}
-	return MESSAGE_MENTIONED
+	for _, e := range message.Embedded {
+		if e.ID == bot.userId {
+			return MESSAGE_MENTIONED
+		}
+	}
+	return MESSAGE_NORMAL
 }
