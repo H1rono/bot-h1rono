@@ -61,11 +61,12 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 
 // MESSAGE_CREATED
 func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
-	log.Infof("%sさんがメッセージを投稿しました。", payload.Message.User.DisplayName)
-	log.Infof("メッセージID: %s", payload.Message.ID)
-	log.Infof("内容: %s", payload.Message.PlainText)
-	log.Infof("埋め込み: %v", payload.Message.Embedded)
 	m := &payload.Message
+	log.Info("メッセージが投稿されました。")
+	log.Infof("投稿者: 名前:%s, traQ ID:%s, UUID:%s", m.User.DisplayName, m.User.Name, m.User.ID)
+	log.Infof("メッセージID: %s", m.ID)
+	log.Infof("内容: %s", m.PlainText)
+	log.Infof("埋め込み: %v", m.Embedded)
 	t := bot.JudgeMessageType(m)
 	switch t {
 	case MESSAGE_NORMAL:
