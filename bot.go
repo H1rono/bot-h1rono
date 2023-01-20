@@ -79,6 +79,9 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 		bot.HandlePingMessage(m)
 	case MESSAGE_MENTIONED:
 		bot.HandleMentionMessage(m)
+	case MESSAGE_FROM_BOT:
+		// BOTの発言には反応しない
+		return
 	}
 	// :kidoku:を押す
 	bot.client.MessageApi.

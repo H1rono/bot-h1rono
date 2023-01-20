@@ -15,6 +15,7 @@ const (
 	MESSAGE_LEAVE                        // "@BOT_H1rono :wave:"みたいな
 	MESSAGE_PING                         // `(@BOT_H1rono )?ping`
 	MESSAGE_MENTIONED                    // "@BOT_H1rono"を含む何か
+	MESSAGE_FROM_BOT                     // BOTが出したメッセージ
 )
 
 var (
@@ -24,6 +25,9 @@ var (
 )
 
 func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
+	if strings.HasPrefix(message.User.Name, "BOT") {
+		return MESSAGE_FROM_BOT
+	}
 	b := []byte(strings.ToLower(message.PlainText))
 	if JOIN_REGEXP.Match(b) {
 		return MESSAGE_JOIN
