@@ -26,10 +26,12 @@ func NewBot(botId string, userId string, accessToken string, verificationToken s
 
 /* --- ここからシステム系のイベントたち --- */
 
+// PING
 func (bot Bot) PingHandler(payload *traqbot.PingPayload) {
 	log.Info("ping")
 }
 
+// JOIN
 func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 	log.Info("チャンネルに参加しました。")
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
@@ -41,6 +43,7 @@ func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 		Execute()
 }
 
+// LEFT
 func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 	log.Info("チャンネルから退出しました。")
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
@@ -56,6 +59,7 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 
 /* --- ここからメッセージ系のイベントたち --- */
 
+// MESSAGE_CREATED
 func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	log.Infof("%sさんがメッセージを投稿しました。", payload.Message.User.DisplayName)
 	log.Infof("メッセージID: %s", payload.Message.ID)
