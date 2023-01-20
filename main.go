@@ -37,14 +37,9 @@ func main() {
 	uid := os.Getenv("BOT_USER_ID")
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
-	bot := NewBot(bid, uid, at, vt)
+	b := NewBot(bid, uid, at, vt)
 
-	handlers := traqbot.EventHandlers{}
-	handlers.SetPingHandler(bot.PingHandler)
-	handlers.SetJoinedHandler(bot.JoinHandler)
-	handlers.SetLeftHandler(bot.LeftHandler)
-	handlers.SetMessageCreatedHandler(bot.MessageCreatedHandler)
-
+	handlers := b.MakeHandlers()
 	server := traqbot.NewBotServer(vt, handlers)
 	log.Fatal(server.ListenAndServe(":8080"))
 }

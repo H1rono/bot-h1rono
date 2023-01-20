@@ -24,6 +24,15 @@ func NewBot(botId string, userId string, accessToken string, verificationToken s
 	return Bot{client, auth, botId, userId, verificationToken, accessToken}
 }
 
+func (bot Bot) MakeHandlers() traqbot.EventHandlers {
+	handlers := traqbot.EventHandlers{}
+	handlers.SetPingHandler(bot.PingHandler)
+	handlers.SetJoinedHandler(bot.JoinHandler)
+	handlers.SetLeftHandler(bot.LeftHandler)
+	handlers.SetMessageCreatedHandler(bot.MessageCreatedHandler)
+	return handlers
+}
+
 /* --- ここからシステム系のイベントたち --- */
 
 // PING
