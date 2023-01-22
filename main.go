@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
+	"github.com/labstack/echo/v4"
 	log "github.com/sirupsen/logrus"
-	traqbot "github.com/traPtitech/traq-bot"
 
 	"git.trap.jp/H1rono_K/bot-h1rono/bot"
 	"git.trap.jp/H1rono_K/bot-h1rono/util"
@@ -21,6 +21,7 @@ func main() {
 	b := bot.NewBot(bid, uid, at, vt)
 
 	handlers := b.MakeHandlers()
-	server := traqbot.NewBotServer(vt, handlers)
-	log.Fatal(server.ListenAndServe(":8080"))
+	e := echo.New()
+	e.POST("/bot", util.MakeBotHandler(vt, handlers))
+	log.Fatal(e.Start(":1323"))
 }
