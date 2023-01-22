@@ -54,7 +54,7 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 	log.Info("チャンネルから退出しました。")
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
-	m := ":leave:d"
+	m := ":leaves:"
 	bot.SendMessage(payload.Channel.ID, m)
 }
 

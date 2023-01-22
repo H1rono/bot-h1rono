@@ -15,8 +15,9 @@ func main() {
 	uid := os.Getenv("BOT_USER_ID")
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
+	l := os.Getenv("LOG_LEVEL")
 
-	util.SetupLogging()
+	util.SetupLogging(l)
 
 	b := bot.NewBot(bid, uid, at, vt)
 

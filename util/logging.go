@@ -2,31 +2,39 @@ package util
 
 import (
 	"net/http"
-	"os"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/traPtitech/go-traq"
 )
 
-func SetupLogging() {
-	// TRACE, DEBUG, INFO, WARNING, ERROR, FATAL, PANIC
-	l := os.Getenv("LOG_LEVEL")
+const (
+	LOG_LEVEL_TRACE   = "TRACE"
+	LOG_LEVEL_DEBUG   = "DEBUG"
+	LOG_LEVEL_INFO    = "INFO"
+	LOG_LEVEL_WARNING = "WARNING"
+	LOG_LEVEL_ERROR   = "ERROR"
+	LOG_LEVEL_FATAL   = "FATAL"
+	LOG_LEVEL_PANIC   = "PANIC"
+)
+
+func SetupLogging(l string) {
+	// l: TRACE, DEBUG, INFO, WARNING, ERROR, FATAL, PANIC
 	switch l {
-	case "TRACE":
+	case LOG_LEVEL_TRACE:
 		log.SetLevel(log.TraceLevel)
-	case "DEBUG":
+	case LOG_LEVEL_DEBUG:
 		log.SetLevel(log.DebugLevel)
-	case "INFO", "":
+	case LOG_LEVEL_INFO, "":
 		// l = "" の場合に後の出力が残念になるため
 		l = "INFO"
 		log.SetLevel(log.InfoLevel)
-	case "WARNING":
+	case LOG_LEVEL_WARNING:
 		log.SetLevel(log.WarnLevel)
-	case "ERROR":
+	case LOG_LEVEL_ERROR:
 		log.SetLevel(log.ErrorLevel)
-	case "FATAL":
+	case LOG_LEVEL_FATAL:
 		log.SetLevel(log.FatalLevel)
-	case "PANIC":
+	case LOG_LEVEL_PANIC:
 		log.SetLevel(log.PanicLevel)
 	default:
 		log.Fatalf("Unexpected environment variable LOG_LEVEL=%s", l)
