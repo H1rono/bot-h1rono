@@ -1,6 +1,7 @@
-package main
+package util
 
 import (
+	"net/http"
 	"os"
 
 	log "github.com/sirupsen/logrus"
@@ -30,4 +31,23 @@ func SetupLogging() {
 		log.Fatalf("Unexpected environment variable LOG_LEVEL=%s", l)
 	}
 	log.Infof("log level is set at %s", l)
+}
+
+func LogResponse(r *http.Response) {
+	if r.StatusCode >= 400 {
+		log.Errorf("エラーレスポンス%sを受け取りました", r.Status)
+		log.Error("リクエスト:")
+		log.Error(r.Request.Header)
+		log.Error(r.Request.Body)
+		log.Error("レスポンス:")
+		log.Error(r.Header)
+		log.Error(r.Body)
+	} else {
+		log.Debug("リクエスト:")
+		log.Debug(r.Request.Header)
+		log.Debug(r.Request.Body)
+		log.Debug("レスポンス:")
+		log.Debug(r.Header)
+		log.Debug(r.Body)
+	}
 }

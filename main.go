@@ -7,6 +7,7 @@ import (
 	traqbot "github.com/traPtitech/traq-bot"
 
 	"git.trap.jp/H1rono_K/bot-h1rono/bot"
+	"git.trap.jp/H1rono_K/bot-h1rono/util"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
 
-	SetupLogging()
+	util.SetupLogging()
 
 	b := bot.NewBot(bid, uid, at, vt)
 

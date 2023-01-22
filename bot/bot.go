@@ -7,6 +7,8 @@ import (
 
 	"github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
+
+	"git.trap.jp/H1rono_K/bot-h1rono/util"
 )
 
 type Bot struct {
@@ -46,10 +48,15 @@ func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
 	msg := traq.NewPostMessageRequest(":oisu-1::oisu-2::oisu-3::oisu-4yoko:")
-	bot.client.MessageApi.
+	m, r, err := bot.client.MessageApi.
 		PostMessage(bot.auth, payload.Channel.ID).
 		PostMessageRequest(*msg).
 		Execute()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Infof("メッセージを投稿しました。ID: %s", m.Id)
+	util.LogResponse(r)
 }
 
 // LEFT
