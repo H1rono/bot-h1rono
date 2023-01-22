@@ -7,8 +7,6 @@ import (
 
 	"github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
-
-	"git.trap.jp/H1rono_K/bot-h1rono/util"
 )
 
 type Bot struct {
@@ -47,16 +45,8 @@ func (bot Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 	log.Info("チャンネルに参加しました。")
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
-	msg := traq.NewPostMessageRequest(":oisu-1::oisu-2::oisu-3::oisu-4yoko:")
-	m, r, err := bot.client.MessageApi.
-		PostMessage(bot.auth, payload.Channel.ID).
-		PostMessageRequest(*msg).
-		Execute()
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Infof("メッセージを投稿しました。ID: %s", m.Id)
-	util.LogResponse(r)
+	m := ":oisu-1::oisu-2::oisu-3::oisu-4yoko:"
+	bot.SendMessage(payload.Channel.ID, m)
 }
 
 // LEFT
@@ -64,11 +54,8 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 	log.Info("チャンネルから退出しました。")
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
-	msg := traq.NewPostMessageRequest(":leave:d")
-	bot.client.MessageApi.
-		PostMessage(bot.auth, payload.Channel.ID).
-		PostMessageRequest(*msg).
-		Execute()
+	m := ":leave:d"
+	bot.SendMessage(payload.Channel.ID, m)
 }
 
 /* --- ここまでシステム系のイベントたち --- */
@@ -128,10 +115,7 @@ func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 
 func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 	log.Info("HandlePingMessageでメッセージを処理")
-	bot.client.MessageApi.
-		PostMessage(bot.auth, message.ChannelID).
-		PostMessageRequest(*traq.NewPostMessageRequest("pong")).
-		Execute()
+	bot.SendMessage(message.ChannelID, "pong")
 }
 
 func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {

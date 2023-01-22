@@ -4,7 +4,11 @@ import (
 	"regexp"
 	"strings"
 
+	log "github.com/sirupsen/logrus"
+	"github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
+
+	"git.trap.jp/H1rono_K/bot-h1rono/util"
 )
 
 type MessageType uint8
@@ -44,4 +48,16 @@ func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 		}
 	}
 	return MESSAGE_NORMAL
+}
+
+func (bot Bot) SendMessage(cid string, msg string) {
+	m, r, err := bot.client.MessageApi.
+		PostMessage(bot.auth, cid).
+		PostMessageRequest(*traq.NewPostMessageRequest(msg)).
+		Execute()
+	if err != nil {
+		log.Fatal(err)
+	}
+	util.LogSentMessage(m)
+	util.LogResponse(r)
 }

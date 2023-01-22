@@ -5,6 +5,7 @@ import (
 	"os"
 
 	log "github.com/sirupsen/logrus"
+	"github.com/traPtitech/go-traq"
 )
 
 func SetupLogging() {
@@ -50,4 +51,10 @@ func LogResponse(r *http.Response) {
 		log.Debug(r.Header)
 		log.Debug(r.Body)
 	}
+}
+
+func LogSentMessage(m *traq.Message) {
+	log.Debug("メッセージを投稿しました。")
+	log.Debugf("ID: %s", m.Id)
+	log.Debugf("チャンネルID: %s", m.ChannelId)
 }
