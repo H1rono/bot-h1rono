@@ -94,11 +94,11 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 }
 
 func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
-	log.Info("HandleNormalMessageでメッセージを処理")
+	log.Trace("HandleNormalMessageでメッセージを処理")
 }
 
 func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
-	log.Info("HandleJoinMessageでメッセージを処理")
+	log.Trace("HandleJoinMessageでメッセージを処理")
 	bot.client.BotApi.
 		LetBotJoinChannel(bot.auth, bot.id).
 		PostBotActionJoinRequest(*traq.NewPostBotActionJoinRequest(message.ChannelID)).
@@ -106,7 +106,7 @@ func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 }
 
 func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
-	log.Info("HandleLeaveMessageでメッセージを処理")
+	log.Trace("HandleLeaveMessageでメッセージを処理")
 	bot.client.BotApi.
 		LetBotLeaveChannel(bot.auth, bot.id).
 		PostBotActionLeaveRequest(*traq.NewPostBotActionLeaveRequest(message.ChannelID)).
@@ -114,12 +114,12 @@ func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 }
 
 func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
-	log.Info("HandlePingMessageでメッセージを処理")
+	log.Trace("HandlePingMessageでメッセージを処理")
 	bot.SendMessage(message.ChannelID, "pong")
 }
 
 func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {
-	log.Info("HandleMentionMessageでメッセージを処理")
+	log.Trace("HandleMentionMessageでメッセージを処理")
 }
 
 /* --- ここまでメッセージ系のイベントたち --- */
