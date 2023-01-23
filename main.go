@@ -15,11 +15,12 @@ func main() {
 	uid := os.Getenv("BOT_USER_ID")
 	at := os.Getenv("BOT_ACCESS_TOKEN")
 	vt := os.Getenv("BOT_VERIFICATION_TOKEN")
+	cid := os.Getenv("BOT_LOG_CHANNEL_ID")
 	l := os.Getenv("LOG_LEVEL")
 
 	util.SetupLogging(l)
 
-	b := bot.New(bid, uid, at, vt)
+	b := bot.New(bid, uid, at, vt, cid)
 
 	handlers := b.MakeHandlers()
 	e := echo.New()
