@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo/v4"
 	log "github.com/sirupsen/logrus"
 
+	"git.trap.jp/H1rono_K/bot-h1rono/api"
 	"git.trap.jp/H1rono_K/bot-h1rono/bot"
 	"git.trap.jp/H1rono_K/bot-h1rono/util"
 )
@@ -19,11 +20,10 @@ func main() {
 	l := os.Getenv("LOG_LEVEL")
 
 	util.SetupLogging(l)
-
 	b := bot.New(bid, uid, at, vt, cid)
-
-	handlers := b.MakeHandlers()
+	hs := b.MakeHandlers()
 	e := echo.New()
-	e.POST("/bot", util.MakeBotHandler(vt, handlers))
+	e.POST("/bot", util.MakeBotHandler(vt, hs))
+	api.SetRouting(e)
 	log.Fatal(e.Start(":1323"))
 }
