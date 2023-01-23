@@ -43,7 +43,7 @@ func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 		return MESSAGE_PING
 	}
 	for _, e := range message.Embedded {
-		if e.ID == bot.userId {
+		if e.ID == bot.UserId {
 			return MESSAGE_MENTIONED
 		}
 	}

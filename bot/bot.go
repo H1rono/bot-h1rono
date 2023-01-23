@@ -11,13 +11,13 @@ import (
 )
 
 type Bot struct {
-	client       *traq.APIClient
-	auth         context.Context
-	id           string
-	userId       string
-	verifToken   string
-	accessToken  string
-	logChannelId string
+	client            *traq.APIClient
+	auth              context.Context
+	Id                string
+	UserId            string
+	VerificationToken string
+	AccessToken       string
+	LogChannelId      string
 }
 
 func New(botId string, userId string, accessToken string, verificationToken string, logChannelId string) Bot {
@@ -50,7 +50,7 @@ func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
 func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleJoinMessageでメッセージを処理")
 	r, err := bot.client.BotApi.
-		LetBotJoinChannel(bot.auth, bot.id).
+		LetBotJoinChannel(bot.auth, bot.Id).
 		PostBotActionJoinRequest(*traq.NewPostBotActionJoinRequest(message.ChannelID)).
 		Execute()
 	if err != nil {
@@ -62,7 +62,7 @@ func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleLeaveMessageでメッセージを処理")
 	r, err := bot.client.BotApi.
-		LetBotLeaveChannel(bot.auth, bot.id).
+		LetBotLeaveChannel(bot.auth, bot.Id).
 		PostBotActionLeaveRequest(*traq.NewPostBotActionLeaveRequest(message.ChannelID)).
 		Execute()
 	if err != nil {
