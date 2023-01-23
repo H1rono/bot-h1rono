@@ -19,7 +19,7 @@ func main() {
 
 	util.SetupLogging(l)
 
-	b := bot.NewBot(bid, uid, at, vt)
+	b := bot.New(bid, uid, at, vt)
 
 	handlers := b.MakeHandlers()
 	e := echo.New()
