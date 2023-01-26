@@ -54,10 +54,8 @@ func LogResponse(r *http.Response) {
 	} else {
 		log.Debug("リクエスト:")
 		log.Debug(r.Request.Header)
-		log.Debug(r.Request.Body)
 		log.Debug("レスポンス:")
 		log.Debug(r.Header)
-		log.Debug(r.Body)
 	}
 }
 
