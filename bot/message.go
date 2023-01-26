@@ -22,6 +22,8 @@ const (
 	MESSAGE_FROM_BOT                     // BOTが出したメッセージ
 )
 
+const FALLBACK_MESSAGE = "メッセージの送信に失敗しました:melting_face:"
+
 var (
 	JOIN_REGEXP  = regexp.MustCompile(`^\s*@bot_h1rono\s+:oisu-(1::oisu-2::oisu-3::oisu-4yoko)?:\s*$`)
 	LEAVE_REGEXP = regexp.MustCompile(`^\s*@bot_h1rono\s+:wave:\s*$`)
@@ -56,7 +58,11 @@ func (bot Bot) SendMessage(cid string, msg string) {
 		PostMessageRequest(*traq.NewPostMessageRequest(msg)).
 		Execute()
 	if err != nil {
-		log.Fatal(err)
+		bot.client.MessageApi.
+			PostMessage(bot.auth, cid).
+			PostMessageRequest(*traq.NewPostMessageRequest(FALLBACK_MESSAGE)).
+			Execute()
+		log.Fatalf("[bot.SendMessage] %v", err)
 	}
 	util.LogSentMessage(m)
 	util.LogResponse(r)
