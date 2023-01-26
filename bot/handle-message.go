@@ -10,7 +10,7 @@ import (
 	traqbot "github.com/traPtitech/traq-bot"
 )
 
-const MAX_STAMPS = 500
+const MAX_STAMPS = 1000
 
 func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	msg := message.PlainText
