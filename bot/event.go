@@ -3,9 +3,7 @@ package bot
 import (
 	"encoding/json"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/util"
 	log "github.com/sirupsen/logrus"
-	"github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"
 )
 
@@ -60,12 +58,12 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	}
 	bot.StampPatternMatch(&payload.Message)
 	// :kidoku:を押す
-	r, err := bot.client.MessageApi.
-		AddMessageStamp(bot.auth, payload.Message.ID, "aa9d4808-de1a-400d-9ab2-6db66fcd5bc7").
-		PostMessageStampRequest(*traq.NewPostMessageStampRequest(1)).
-		Execute()
-	if err != nil {
-		log.Error(err)
-	}
-	util.LogResponse(r)
+	// r, err := bot.client.MessageApi.
+	// 	AddMessageStamp(bot.auth, payload.Message.ID, "aa9d4808-de1a-400d-9ab2-6db66fcd5bc7").
+	// 	PostMessageStampRequest(*traq.NewPostMessageStampRequest(1)).
+	// 	Execute()
+	// if err != nil {
+	// 	log.Error(err)
+	// }
+	// util.LogResponse(r)
 }
