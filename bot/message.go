@@ -67,7 +67,7 @@ func (bot Bot) SendMessage(cid string, msg string) {
 			PostMessage(bot.auth, cid).
 			PostMessageRequest(*traq.NewPostMessageRequest(FALLBACK_MESSAGE)).
 			Execute()
-		log.Fatalf("[bot.SendMessage] %v", err)
+		log.Errorf("[bot.SendMessage] %v", err)
 	}
 	util.LogSentMessage(m)
 	util.LogResponse(r)
