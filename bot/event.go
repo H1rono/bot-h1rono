@@ -1,6 +1,8 @@
 package bot
 
 import (
+	"encoding/json"
+
 	"git.trap.jp/H1rono_K/bot-h1rono/util"
 	log "github.com/sirupsen/logrus"
 	"github.com/traPtitech/go-traq"
