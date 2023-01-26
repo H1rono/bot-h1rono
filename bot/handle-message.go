@@ -18,8 +18,16 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	}
 	pat_s := strings.Join(patterns, "")
 	result := make([]string, 0, len(patterns))
+	lenStamps := 0
 	for _, pattern := range patterns {
 		stamps := util.FindAllStamps(pattern, bot.stamps)
+		lenStamps += len(stamps)
+		if lenStamps >= 1000 {
+			over := lenStamps - 1000
+			stamps = stamps[:len(stamps)-over]
+			result = append(result, strings.Join(stamps, ""))
+			break
+		}
 		result = append(result, strings.Join(stamps, ""))
 	}
 	res := strings.Join(result, "")
