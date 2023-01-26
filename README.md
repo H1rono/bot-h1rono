@@ -28,9 +28,9 @@ ping
 
 例:
 
-- `:oisu-?:`: :oisu-4::oisu-2::oisu-1::oisu-3:
-- `:oisu*:`: :oisu-4::oisu-iteraton_mark::oisu-tu::oisu-ten::oisu-ri::oisu-cat1::oisu-bo::oisu-ko::oisu-yo::oisu-kyurun::oisu-4yoko::oisu-he::oisu-ra::oisu-cat3::oisu-ho::oisu-dakuten::oisu-si::oisu-cat2::oisu-2::oisu-1::oisu-::oisu-3:
-- `:oisu-+:`: :oisu-4::oisu-iteraton_mark::oisu-tu::oisu-ten::oisu-ri::oisu-cat1::oisu-bo::oisu-ko::oisu-yo::oisu-kyurun::oisu-4yoko::oisu-he::oisu-ra::oisu-cat3::oisu-ho::oisu-dakuten::oisu-si::oisu-cat2::oisu-2::oisu-1::oisu-3:
+- `:oisu-?:` → :oisu-3::oisu-1::oisu-2::oisu-4:
+- `:oisu-*:` → :oisu-2::oisu-ho::oisu-3::oisu-ri::oisu-bo::oisu-1::oisu-he::oisu-tu::oisu-cat1::oisu-ra::oisu-iteraton_mark::oisu-4::oisu-::oisu-ten::oisu-dakuten::oisu-4yoko::oisu-si::oisu-kyurun::oisu-ko::oisu-cat2::oisu-cat3::oisu-yo:
+- `:oisu-+:` → :oisu-ra::oisu-cat1::oisu-4yoko::oisu-he::oisu-bo::oisu-si::oisu-cat2::oisu-yo::oisu-ko::oisu-3::oisu-dakuten::oisu-cat3::oisu-1::oisu-2::oisu-iteraton_mark::oisu-ten::oisu-kyurun::oisu-tu::oisu-ho::oisu-4::oisu-ri:
 
 ## その他
 
