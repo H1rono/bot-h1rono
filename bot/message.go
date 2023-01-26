@@ -25,7 +25,7 @@ const (
 var (
 	JOIN_REGEXP  = regexp.MustCompile(`^\s*@bot_h1rono\s+:oisu-(1::oisu-2::oisu-3::oisu-4yoko)?:\s*$`)
 	LEAVE_REGEXP = regexp.MustCompile(`^\s*@bot_h1rono\s+:wave:\s*$`)
-	PING_REGEXP  = regexp.MustCompile(`^\s*(@bot_h1rono\s)?\s*:[A-Za-z_]*ping[A-Za-z_]*:\s*$`)
+	PING_REGEXP  = regexp.MustCompile(`^\s*(@bot_h1rono\s)?\s*:[a-zA-Z0-9_-]*ping[a-zA-Z0-9_-]*(\.[a-zA-Z0-9_-]+)*:\s*$`)
 )
 
 func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
