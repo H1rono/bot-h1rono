@@ -1,8 +1,8 @@
 package bot
 
 import (
-	"io/ioutil"
 	"math/rand"
+	"os"
 	"reflect"
 	"strings"
 
@@ -81,7 +81,7 @@ func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 
 func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleHelpMessageでメッセージを処理")
-	readme, err := ioutil.ReadFile("./README.md")
+	readme, err := os.ReadFile("./README.md")
 	if err != nil {
 		log.Fatalf("[bot.HandleHelpMessage] %v", err)
 	}
