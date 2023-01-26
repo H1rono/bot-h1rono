@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"io/ioutil"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -76,6 +77,14 @@ func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandlePingMessageでメッセージを処理")
 	bot.SendMessage(message.ChannelID, "pong")
+}
+
+func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
+	readme, err := ioutil.ReadFile("./README.md")
+	if err != nil {
+		log.Fatalf("[bot.HandleHelpMessage] %v", err)
+	}
+	bot.SendMessage(message.ChannelID, string(readme))
 }
 
 func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {
