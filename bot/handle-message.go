@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"math/rand"
 	"strings"
 
 	"git.trap.jp/H1rono_K/bot-h1rono/util"
@@ -19,7 +20,7 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 		return
 	}
 	pat_s := strings.Join(patterns, "")
-	result := make([]string, 0, len(patterns))
+	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
 	for _, pattern := range patterns {
 		stamps := util.FindAllStamps(pattern, bot.stamps)
@@ -27,11 +28,14 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 		if lenStamps >= MAX_STAMPS {
 			over := lenStamps - MAX_STAMPS
 			stamps = stamps[:len(stamps)-over]
-			result = append(result, strings.Join(stamps, ""))
+			result = append(result, stamps...)
 			break
 		}
-		result = append(result, strings.Join(stamps, ""))
+		result = append(result, stamps...)
 	}
+	rand.Shuffle(len(result), func(i, j int) {
+		result[i], result[j] = result[j], result[i]
+	})
 	res := strings.Join(result, "")
 	if pat_s == res {
 		return
