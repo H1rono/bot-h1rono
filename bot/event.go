@@ -34,10 +34,12 @@ func (bot Bot) LeftHandler(payload *traqbot.LeftPayload) {
 func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	m := &payload.Message
 	log.Info("メッセージが投稿されました。")
-	log.Infof("投稿者: 名前:%s, traQ ID:%s, UUID:%s", m.User.DisplayName, m.User.Name, m.User.ID)
-	log.Infof("メッセージID: %s", m.ID)
-	log.Infof("内容: %s", m.PlainText)
-	log.Infof("埋め込み: %v", m.Embedded)
+	j, err := json.Marshal(payload)
+	if err != nil {
+		log.Error(err)
+	} else {
+		log.Info(string(j))
+	}
 	t := bot.JudgeMessageType(m)
 	switch t {
 	case MESSAGE_NORMAL:
