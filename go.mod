@@ -1,4 +1,4 @@
-module git.trap.jp/H1rono_K/bot-h1rono
+module github.com/H1rono/bot-h1rono
 
 go 1.19
 

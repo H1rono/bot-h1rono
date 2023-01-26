@@ -3,7 +3,7 @@ package bot
 import (
 	"context"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/util"
+	"github.com/H1rono/bot-h1rono/util"
 
 	"github.com/traPtitech/go-traq"
 	traqbot "github.com/traPtitech/traq-bot"

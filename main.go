@@ -8,9 +8,9 @@ import (
 	"github.com/labstack/echo/v4"
 	log "github.com/sirupsen/logrus"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/api"
-	"git.trap.jp/H1rono_K/bot-h1rono/bot"
-	"git.trap.jp/H1rono_K/bot-h1rono/util"
+	"github.com/H1rono/bot-h1rono/api"
+	"github.com/H1rono/bot-h1rono/bot"
+	"github.com/H1rono/bot-h1rono/util"
 )
 
 func main() {

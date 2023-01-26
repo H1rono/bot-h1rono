@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/util"
+	"github.com/H1rono/bot-h1rono/util"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/traPtitech/go-traq"

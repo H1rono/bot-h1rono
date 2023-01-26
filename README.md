@@ -34,7 +34,7 @@
 
 ## その他
 
-[リポジトリ](https://git.trap.jp/H1rono_K/bot-h1rono)を見てください。Web APIがあったりします。
+[リポジトリ](https://github.com/H1rono/bot-h1rono)を見てください。Web APIがあったりします。
 
 希望/相談などは@.H1rono_Kまで
 アイコン募集中です

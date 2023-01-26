@@ -6,7 +6,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/bot"
+	"github.com/H1rono/bot-h1rono/bot"
 )
 
 func SetRouting(e *echo.Echo, b *bot.Bot) {

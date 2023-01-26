@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 	log "github.com/sirupsen/logrus"
 
-	"git.trap.jp/H1rono_K/bot-h1rono/bot"
+	"github.com/H1rono/bot-h1rono/bot"
 )
 
 type SayRequest struct {
