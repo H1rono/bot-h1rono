@@ -10,6 +10,8 @@ import (
 	traqbot "github.com/traPtitech/traq-bot"
 )
 
+const MAX_STAMPS = 500
+
 func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	msg := message.PlainText
 	patterns := util.ExtractStampPatterns(msg)
@@ -22,8 +24,8 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	for _, pattern := range patterns {
 		stamps := util.FindAllStamps(pattern, bot.stamps)
 		lenStamps += len(stamps)
-		if lenStamps >= 1000 {
-			over := lenStamps - 1000
+		if lenStamps >= MAX_STAMPS {
+			over := lenStamps - MAX_STAMPS
 			stamps = stamps[:len(stamps)-over]
 			result = append(result, strings.Join(stamps, ""))
 			break
