@@ -2,6 +2,7 @@ package bot
 
 import (
 	"math/rand"
+	"reflect"
 	"strings"
 
 	"git.trap.jp/H1rono_K/bot-h1rono/util"
@@ -19,7 +20,6 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	if len(patterns) == 0 {
 		return
 	}
-	pat_s := strings.Join(patterns, "")
 	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
 	for _, pattern := range patterns {
@@ -33,13 +33,13 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 		}
 		result = append(result, stamps...)
 	}
+	if reflect.DeepEqual(result, patterns) {
+		return
+	}
 	rand.Shuffle(len(result), func(i, j int) {
 		result[i], result[j] = result[j], result[i]
 	})
 	res := strings.Join(result, "")
-	if pat_s == res {
-		return
-	}
 	log.Infof("パターン: %#v", patterns)
 	log.Infof("結果: %#v", result)
 	bot.SendMessage(message.ChannelID, res)
