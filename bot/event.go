@@ -59,13 +59,4 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 		return
 	}
 	bot.StampPatternMatch(&payload.Message)
-	// :kidoku:を押す
-	// r, err := bot.client.MessageApi.
-	// 	AddMessageStamp(bot.auth, payload.Message.ID, "aa9d4808-de1a-400d-9ab2-6db66fcd5bc7").
-	// 	PostMessageStampRequest(*traq.NewPostMessageStampRequest(1)).
-	// 	Execute()
-	// if err != nil {
-	// 	log.Error(err)
-	// }
-	// util.LogResponse(r)
 }

@@ -80,6 +80,7 @@ func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 }
 
 func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
+	log.Trace("HandleHelpMessageでメッセージを処理")
 	readme, err := ioutil.ReadFile("./README.md")
 	if err != nil {
 		log.Fatalf("[bot.HandleHelpMessage] %v", err)
