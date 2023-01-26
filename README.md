@@ -32,6 +32,9 @@ ping
 - `:oisu*:`: :oisu-4::oisu-iteraton_mark::oisu-tu::oisu-ten::oisu-ri::oisu-cat1::oisu-bo::oisu-ko::oisu-yo::oisu-kyurun::oisu-4yoko::oisu-he::oisu-ra::oisu-cat3::oisu-ho::oisu-dakuten::oisu-si::oisu-cat2::oisu-2::oisu-1::oisu-::oisu-3:
 - `:oisu-+:`: :oisu-4::oisu-iteraton_mark::oisu-tu::oisu-ten::oisu-ri::oisu-cat1::oisu-bo::oisu-ko::oisu-yo::oisu-kyurun::oisu-4yoko::oisu-he::oisu-ra::oisu-cat3::oisu-ho::oisu-dakuten::oisu-si::oisu-cat2::oisu-2::oisu-1::oisu-3:
 
-## else
+## その他
 
 [リポジトリ](https://git.trap.jp/H1rono_K/bot-h1rono)を見てください。Web APIがあったりします。
+
+希望/相談などは@.H1rono_Kまで
+アイコン募集中です

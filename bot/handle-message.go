@@ -76,7 +76,7 @@ func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 
 func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandlePingMessageでメッセージを処理")
-	bot.SendMessage(message.ChannelID, "pong")
+	bot.SendMessage(message.ChannelID, ":ping_pong:")
 }
 
 func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
