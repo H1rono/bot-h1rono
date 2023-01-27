@@ -21,6 +21,9 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	if len(patterns) == 0 {
 		return
 	}
+	rand.Shuffle(len(bot.stamps), func(i, j int) {
+		bot.stamps[i], bot.stamps[j] = bot.stamps[j], bot.stamps[i]
+	})
 	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
 	for _, pattern := range patterns {
@@ -37,9 +40,6 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	if reflect.DeepEqual(result, patterns) {
 		return
 	}
-	rand.Shuffle(len(result), func(i, j int) {
-		result[i], result[j] = result[j], result[i]
-	})
 	res := strings.Join(result, "")
 	log.Infof("パターン: %#v", patterns)
 	log.Infof("結果: %#v", result)
