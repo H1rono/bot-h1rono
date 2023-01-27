@@ -46,7 +46,7 @@ func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
 	re_src := strings.ReplaceAll(left, `*`, `[a-zA-Z0-9_-]*`)
 	re_src = strings.ReplaceAll(re_src, `?`, `[a-zA-Z0-9_-]`)
 	re_src = strings.ReplaceAll(re_src, `+`, `[a-zA-Z0-9_-]+`)
-	re := regexp.MustCompile(fmt.Sprintf(`^%s$`, re_src))
+	re := regexp.MustCompile(fmt.Sprintf(`(?i)^%s$`, re_src))
 	// 後でこの配列をJoinする
 	result := make([]string, 0, len(stamps))
 	for _, stamp := range stamps {
