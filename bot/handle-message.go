@@ -43,6 +43,7 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 		}
 		// ls <= len(stamps)
 		lenStamps += ls
+		stamps = stamps[:ls]
 		if lenStamps >= MAX_STAMPS {
 			over := lenStamps - MAX_STAMPS
 			stamps = stamps[:ls-over]
@@ -57,6 +58,7 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	res := strings.Join(result, "")
 	log.Infof("パターン: %#v", patterns)
 	log.Infof("結果: %#v", result)
+	log.Infof("メッセージ長: %d", len(res))
 	bot.SendMessage(message.ChannelID, res)
 }
 
