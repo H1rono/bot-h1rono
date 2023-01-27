@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	MAX_STAMPS         = 1000
+	MAX_STAMPS         = 500
 	MAX_MESSAGE_LENGTH = 10000 // https://github.com/traPtitech/traQ_S-UI/blob/1daa36143945172c641943edfbd1412570e5b26b/src/lib/validate.ts#L10
 )
 
