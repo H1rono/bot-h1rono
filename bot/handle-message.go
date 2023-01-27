@@ -13,7 +13,10 @@ import (
 	traqbot "github.com/traPtitech/traq-bot"
 )
 
-const MAX_STAMPS = 1000
+const (
+	MAX_STAMPS         = 1000
+	MAX_MESSAGE_LENGTH = 10000 // https://github.com/traPtitech/traQ_S-UI/blob/1daa36143945172c641943edfbd1412570e5b26b/src/lib/validate.ts#L10
+)
 
 func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	msg := message.PlainText
@@ -26,12 +29,23 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	})
 	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
+	lenMessage := 0
 	for _, pattern := range patterns {
 		stamps := util.FindAllStamps(pattern, bot.stamps)
-		lenStamps += len(stamps)
+		ls := 0
+		for _, s := range stamps {
+			ln := len(s)
+			if lenMessage+ln > MAX_MESSAGE_LENGTH {
+				break
+			}
+			ls++
+			lenMessage += ln
+		}
+		// ls <= len(stamps)
+		lenStamps += ls
 		if lenStamps >= MAX_STAMPS {
 			over := lenStamps - MAX_STAMPS
-			stamps = stamps[:len(stamps)-over]
+			stamps = stamps[:ls-over]
 			result = append(result, stamps...)
 			break
 		}
