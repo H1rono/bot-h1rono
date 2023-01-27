@@ -43,6 +43,9 @@ func SetupLogging(l string) {
 }
 
 func LogResponse(r *http.Response) {
+	if r == nil {
+		return
+	}
 	if r.StatusCode >= 400 {
 		log.Errorf("エラーレスポンス%sを受け取りました", r.Status)
 		log.Error("リクエスト:")
@@ -60,6 +63,9 @@ func LogResponse(r *http.Response) {
 }
 
 func LogSentMessage(m *traq.Message) {
+	if m == nil {
+		return
+	}
 	log.Debug("メッセージを投稿しました。")
 	log.Debugf("ID: %s", m.Id)
 	log.Debugf("チャンネルID: %s", m.ChannelId)
