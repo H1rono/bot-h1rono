@@ -12,7 +12,7 @@ import (
 type Bot struct {
 	client            *traq.APIClient
 	auth              context.Context
-	stamps            util.Stamps
+	Stamps            util.Stamps
 	Id                string
 	UserId            string
 	VerificationToken string

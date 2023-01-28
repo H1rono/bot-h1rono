@@ -24,14 +24,14 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	if len(patterns) == 0 {
 		return
 	}
-	rand.Shuffle(len(bot.stamps), func(i, j int) {
-		bot.stamps[i], bot.stamps[j] = bot.stamps[j], bot.stamps[i]
+	rand.Shuffle(len(bot.Stamps), func(i, j int) {
+		bot.Stamps[i], bot.Stamps[j] = bot.Stamps[j], bot.Stamps[i]
 	})
 	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
 	lenMessage := 0
 	for _, pattern := range patterns {
-		stamps := util.FindAllStamps(pattern, bot.stamps)
+		stamps := util.FindAllStamps(pattern, bot.Stamps)
 		ls := 0
 		for _, s := range stamps {
 			ln := len(s)
