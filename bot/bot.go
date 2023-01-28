@@ -44,3 +44,7 @@ func (bot Bot) MakeHandlers() traqbot.EventHandlers {
 	handlers.SetMessageCreatedHandler(bot.MessageCreatedHandler)
 	return handlers
 }
+
+func (bot *Bot) UpdateStamps() {
+	bot.Stamps = util.FetchStamps(bot.client, bot.auth)
+}
