@@ -21,4 +21,7 @@ func SetRouting(e *echo.Echo, b *bot.Bot) {
 	api.POST("/say", func(c echo.Context) error {
 		return Say(c, b)
 	})
+	api.POST("/stamps/update", func(c echo.Context) error {
+		return UpdateStamps(c, b)
+	})
 }
