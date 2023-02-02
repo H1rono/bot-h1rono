@@ -5,6 +5,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	traqbot "github.com/traPtitech/traq-bot"
+
+	"github.com/H1rono/bot-h1rono/util"
 )
 
 // PING
@@ -69,5 +71,14 @@ func (bot *Bot) StampCreated(payload *traqbot.StampCreatedPayload) {
 		log.Errorf("Error while json.Marshal: %v", err)
 	} else {
 		log.Infof("イベントペイロード: %s", j)
+	}
+	stampId := payload.ID
+	stamp, r, err := bot.client.StampApi.GetStamp(bot.auth, stampId).Execute()
+	if err != nil {
+		log.Errorf("Error while GetStamp: %v", err)
+	}
+	util.LogResponse(r)
+	if stamp != nil {
+		bot.Stamps = append(bot.Stamps, *stamp)
 	}
 }
