@@ -14,10 +14,10 @@ import (
 type MessageType uint8
 
 const (
-	MESSAGE_NORMAL    MessageType = iota // 参加しているチャンネルでの普通のメッセージ
+	MESSAGE_NORMAL    MessageType = iota // ↓以外
 	MESSAGE_JOIN                         // "@BOT_H1rono :oisu-:"みたいな
 	MESSAGE_LEAVE                        // "@BOT_H1rono :wave:"みたいな
-	MESSAGE_PING                         // `(@BOT_H1rono )?ping`
+	MESSAGE_PING                         // `(@BOT_H1rono )?:*ping*:`
 	MESSAGE_MENTIONED                    // "@BOT_H1rono"を含む何か
 	MESSAGE_FROM_BOT                     // BOTが出したメッセージ
 	MESSAGE_HELP                         // help | :question: | :hatena:
