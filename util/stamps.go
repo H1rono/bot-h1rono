@@ -30,7 +30,7 @@ func ExtractStampPatterns(msg string) []string {
 	return STAMP_REGEXP.FindAllString(msg, -1)
 }
 
-func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
+func Pattern2RegexAndEffect(pattern string) (re *regexp.Regexp, effect string) {
 	// :oisu-*.party.parrot: -> oisu-* | .party.parrot
 	i := strings.Index(pattern, ".")
 	l := len(pattern)
@@ -39,19 +39,24 @@ func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
 	}
 	bs := []byte(pattern)
 	// :oisu-*.party.parrot: の oisu-*
-	left := string(bs[1:i])
+	body := string(bs[1:i])
 	// :oisu-*.party.parrot: の .party.parrot なければ空
-	right := string(bs[i : l-1])
+	effect = string(bs[i : l-1])
 	// パターン->正規表現
-	re_src := strings.ReplaceAll(left, `*`, `[a-zA-Z0-9_-]*`)
+	re_src := strings.ReplaceAll(body, `*`, `[a-zA-Z0-9_-]*`)
 	re_src = strings.ReplaceAll(re_src, `?`, `[a-zA-Z0-9_-]`)
 	re_src = strings.ReplaceAll(re_src, `+`, `[a-zA-Z0-9_-]+`)
-	re := regexp.MustCompile(fmt.Sprintf(`(?i)^%s$`, re_src))
+	re = regexp.MustCompile(fmt.Sprintf(`(?i)^%s$`, re_src))
+	return
+}
+
+func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
+	re, effect := Pattern2RegexAndEffect(pattern)
 	// 後でこの配列をJoinする
 	result := make([]string, 0, len(stamps))
 	for _, stamp := range stamps {
 		if re.Match([]byte(stamp.Name)) {
-			res := fmt.Sprintf(":%s%s:", stamp.Name, right)
+			res := fmt.Sprintf(":%s%s:", stamp.Name, effect)
 			result = append(result, res)
 		}
 	}
