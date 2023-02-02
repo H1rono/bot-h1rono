@@ -1,5 +1,5 @@
 ## gitea に同期する用の actions
-name: main
+name: Push to Gitea
 
 on:
   push:
