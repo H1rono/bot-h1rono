@@ -32,7 +32,7 @@ var (
 	HELP_REGEXP  = regexp.MustCompile(`^\s*@bot_h1rono\s+(help|:question:|:hatena:)\s*$`)
 )
 
-func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
+func (bot *Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 	if strings.HasPrefix(message.User.Name, "BOT") {
 		return MESSAGE_FROM_BOT
 	}
@@ -57,7 +57,7 @@ func (bot Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 	return MESSAGE_NORMAL
 }
 
-func (bot Bot) SendMessage(cid string, msg string) {
+func (bot *Bot) SendMessage(cid string, msg string) {
 	m, r, err := bot.client.MessageApi.
 		PostMessage(bot.auth, cid).
 		PostMessageRequest(*traq.NewPostMessageRequest(msg)).

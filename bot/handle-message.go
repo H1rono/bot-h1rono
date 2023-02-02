@@ -18,7 +18,7 @@ const (
 	MAX_MESSAGE_LENGTH = 10000 // https://github.com/traPtitech/traQ_S-UI/blob/1daa36143945172c641943edfbd1412570e5b26b/src/lib/validate.ts#L10
 )
 
-func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
+func (bot *Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	msg := message.PlainText
 	patterns := util.ExtractStampPatterns(msg)
 	if len(patterns) == 0 {
@@ -62,11 +62,11 @@ func (bot Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	bot.SendMessage(message.ChannelID, res)
 }
 
-func (bot Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleNormalMessageでメッセージを処理")
 }
 
-func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleJoinMessageでメッセージを処理")
 	r, err := bot.client.BotApi.
 		LetBotJoinChannel(bot.auth, bot.Id).
@@ -78,7 +78,7 @@ func (bot Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 	util.LogResponse(r)
 }
 
-func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleLeaveMessageでメッセージを処理")
 	r, err := bot.client.BotApi.
 		LetBotLeaveChannel(bot.auth, bot.Id).
@@ -90,12 +90,12 @@ func (bot Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 	util.LogResponse(r)
 }
 
-func (bot Bot) HandlePingMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandlePingMessageでメッセージを処理")
 	bot.SendMessage(message.ChannelID, ":ping_pong:")
 }
 
-func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleHelpMessageでメッセージを処理")
 	readme, err := os.ReadFile("./README.md")
 	if err != nil {
@@ -104,6 +104,6 @@ func (bot Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
 	bot.SendMessage(message.ChannelID, string(readme))
 }
 
-func (bot Bot) HandleMentionMessage(message *traqbot.MessagePayload) {
+func (bot *Bot) HandleMentionMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleMentionMessageでメッセージを処理")
 }
