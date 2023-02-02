@@ -60,3 +60,14 @@ func (bot Bot) MessageCreatedHandler(payload *traqbot.MessageCreatedPayload) {
 	}
 	bot.StampPatternMatch(&payload.Message)
 }
+
+// STAMP_CREATED
+func (bot Bot) StampCreated(payload *traqbot.StampCreatedPayload) {
+	log.Info("スタンプが作成されました。")
+	j, err := json.Marshal(payload)
+	if err != nil {
+		log.Errorf("Error while json.Marshal: %v", err)
+	} else {
+		log.Infof("イベントペイロード: %s", j)
+	}
+}

@@ -42,6 +42,7 @@ func (bot Bot) MakeHandlers() traqbot.EventHandlers {
 	handlers.SetJoinedHandler(bot.JoinHandler)
 	handlers.SetLeftHandler(bot.LeftHandler)
 	handlers.SetMessageCreatedHandler(bot.MessageCreatedHandler)
+	handlers.SetStampCreatedHandler(bot.StampCreated)
 	return handlers
 }
 
