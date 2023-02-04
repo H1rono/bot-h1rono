@@ -12,7 +12,7 @@ import (
 type Bot struct {
 	client            *traq.APIClient
 	auth              context.Context
-	Stamps            util.Stamps
+	stamps            util.Stamps
 	Id                string
 	UserId            string
 	VerificationToken string
@@ -47,5 +47,5 @@ func (bot *Bot) MakeHandlers() traqbot.EventHandlers {
 }
 
 func (bot *Bot) UpdateStamps() {
-	bot.Stamps = util.FetchStamps(bot.client, bot.auth)
+	bot.stamps = util.FetchStamps(bot.client, bot.auth)
 }

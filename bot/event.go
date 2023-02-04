@@ -79,6 +79,6 @@ func (bot *Bot) StampCreated(payload *traqbot.StampCreatedPayload) {
 	}
 	util.LogResponse(r)
 	if stamp != nil {
-		bot.Stamps = append(bot.Stamps, *stamp)
+		bot.stamps = append(bot.stamps, *stamp)
 	}
 }
