@@ -3,6 +3,7 @@ package util
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"regexp"
 	"strings"
 
@@ -12,7 +13,9 @@ import (
 
 type Stamps []traq.Stamp
 
-var STAMP_REGEXP = regexp.MustCompile(`:[a-zA-Z0-9_+*?-]+(\.[a-zA-Z0-9_-]+)*:`)
+var (
+	STAMP_REGEXP = regexp.MustCompile(`:[a-zA-Z0-9_+*?-]+(\.[a-zA-Z0-9_-]+)*:`)
+)
 
 func FetchStamps(client *traq.APIClient, auth context.Context) Stamps {
 	s, r, err := client.StampApi.
@@ -69,4 +72,19 @@ func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
 		result = append(result, pattern)
 	}
 	return result
+}
+
+func FindOneStamp(stamps []traq.Stamp) string {
+	i := rand.Intn(len(stamps))
+	return stamps[i].Name
+}
+
+func PickStamps(pattern string, stamps []traq.Stamp) []string {
+	body, effect := SplitPattern(pattern)
+	if body == "random" {
+		b := FindOneStamp(stamps)
+		s := fmt.Sprintf(":%s%s:", b, effect)
+		return []string{s}
+	}
+	return FindAllStamps(pattern, stamps)
 }

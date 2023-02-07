@@ -31,7 +31,7 @@ func (bot *Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	lenStamps := 0
 	lenMessage := 0
 	for _, pattern := range patterns {
-		stamps := util.FindAllStamps(pattern, bot.stamps)
+		stamps := util.PickStamps(pattern, bot.stamps)
 		ls := 0
 		for _, s := range stamps {
 			ln := len(s)
