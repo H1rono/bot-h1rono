@@ -30,7 +30,7 @@ func ExtractStampPatterns(msg string) []string {
 	return STAMP_REGEXP.FindAllString(msg, -1)
 }
 
-func Pattern2RegexAndEffect(pattern string) (re *regexp.Regexp, effect string) {
+func SplitPattern(pattern string) (body string, effect string) {
 	// :oisu-*.party.parrot: -> oisu-* | .party.parrot
 	i := strings.Index(pattern, ".")
 	l := len(pattern)
@@ -39,9 +39,14 @@ func Pattern2RegexAndEffect(pattern string) (re *regexp.Regexp, effect string) {
 	}
 	bs := []byte(pattern)
 	// :oisu-*.party.parrot: の oisu-*
-	body := string(bs[1:i])
+	body = string(bs[1:i])
 	// :oisu-*.party.parrot: の .party.parrot なければ空
 	effect = string(bs[i : l-1])
+	return
+}
+
+func Pattern2RegexAndEffect(pattern string) (re *regexp.Regexp, effect string) {
+	body, effect := SplitPattern(pattern)
 	// パターン->正規表現
 	re_src := strings.ReplaceAll(body, `*`, `[a-zA-Z0-9_-]*`)
 	re_src = strings.ReplaceAll(re_src, `?`, `[a-zA-Z0-9_-]`)
