@@ -58,7 +58,7 @@ func Pattern2RegexAndEffect(pattern string) (re *regexp.Regexp, effect string) {
 	return
 }
 
-func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
+func FindAllStamps(pattern string, stamps Stamps) []string {
 	re, effect := Pattern2RegexAndEffect(pattern)
 	// 後でこの配列をJoinする
 	result := make([]string, 0, len(stamps))
@@ -74,12 +74,12 @@ func FindAllStamps(pattern string, stamps []traq.Stamp) []string {
 	return result
 }
 
-func FindOneStamp(stamps []traq.Stamp) string {
+func FindOneStamp(stamps Stamps) string {
 	i := rand.Intn(len(stamps))
 	return stamps[i].Name
 }
 
-func PickStamps(pattern string, stamps []traq.Stamp) []string {
+func PickStamps(pattern string, stamps Stamps) []string {
 	body, effect := SplitPattern(pattern)
 	if body == "random" {
 		b := FindOneStamp(stamps)
