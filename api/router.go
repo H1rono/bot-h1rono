@@ -78,8 +78,8 @@ func MakeBotHandler(vt string, handlers traqbot.EventHandlers) func(c echo.Conte
 }
 
 func SetRouting(e *echo.Echo, b *bot.Bot) {
+	e.POST("/bot", MakeBotHandler(b.VerificationToken, b.MakeHandlers()))
 	api := e.Group("/api")
-	api.POST("/bot", MakeBotHandler(b.VerificationToken, b.MakeHandlers()))
 	api.GET("/ping", func(c echo.Context) error {
 		return c.String(http.StatusOK, "pong")
 	})
