@@ -24,9 +24,7 @@ func main() {
 	rand.Seed(time.Now().Unix())
 	util.SetupLogging(l)
 	b := bot.New(bid, uid, at, vt, cid)
-	hs := b.MakeHandlers()
 	e := echo.New()
-	e.POST("/bot", util.MakeBotHandler(vt, hs))
 	api.SetRouting(e, &b)
 	log.Fatal(e.Start(":1323"))
 }
