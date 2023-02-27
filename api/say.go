@@ -12,7 +12,7 @@ import (
 
 type SayRequest struct {
 	Content   string `json:"content"`
-	ChannelID string `json:"channelID,omitempty"`
+	ChannelId string `json:"channelId,omitempty"`
 }
 
 func Say(c echo.Context, b *bot.Bot) error {
@@ -29,7 +29,7 @@ func Say(c echo.Context, b *bot.Bot) error {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
 	log.Infof("Send message `%#v`", payload)
-	cid := payload.ChannelID
+	cid := payload.ChannelId
 	if len(cid) == 0 {
 		cid = b.LogChannelId
 	}
