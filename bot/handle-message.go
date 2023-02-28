@@ -59,7 +59,7 @@ func (bot *Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	log.Infof("パターン: %#v", patterns)
 	log.Infof("結果: %#v", result)
 	log.Infof("メッセージ長: %d", len(res))
-	bot.SendMessage(message.ChannelID, res)
+	bot.SendMessage(message.ChannelID, res, false)
 }
 
 func (bot *Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
@@ -92,7 +92,7 @@ func (bot *Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 
 func (bot *Bot) HandlePingMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandlePingMessageでメッセージを処理")
-	bot.SendMessage(message.ChannelID, ":ping_pong:")
+	bot.SendMessage(message.ChannelID, ":ping_pong:", false)
 }
 
 func (bot *Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
@@ -101,7 +101,7 @@ func (bot *Bot) HandleHelpMessage(message *traqbot.MessagePayload) {
 	if err != nil {
 		log.Fatalf("[bot.HandleHelpMessage] %v", err)
 	}
-	bot.SendMessage(message.ChannelID, string(readme))
+	bot.SendMessage(message.ChannelID, string(readme), false)
 }
 
 func (bot *Bot) HandleMentionMessage(message *traqbot.MessagePayload) {

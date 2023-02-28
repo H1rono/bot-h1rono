@@ -33,6 +33,6 @@ func Say(c echo.Context, b *bot.Bot) error {
 	if len(cid) == 0 {
 		cid = b.LogChannelId
 	}
-	b.SendMessage(cid, payload.Content)
+	b.SendMessage(cid, payload.Content, false)
 	return c.NoContent(http.StatusCreated)
 }

@@ -57,10 +57,12 @@ func (bot *Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 	return MESSAGE_NORMAL
 }
 
-func (bot *Bot) SendMessage(cid string, msg string) {
+func (bot *Bot) SendMessage(cid string, msg string, embed bool) {
+	req := traq.NewPostMessageRequest(msg)
+	req.Embed = &embed
 	m, r, err := bot.client.MessageApi.
 		PostMessage(bot.auth, cid).
-		PostMessageRequest(*traq.NewPostMessageRequest(msg)).
+		PostMessageRequest(*req).
 		Execute()
 	if err != nil {
 		bot.client.MessageApi.

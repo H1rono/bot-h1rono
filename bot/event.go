@@ -20,7 +20,7 @@ func (bot *Bot) JoinHandler(payload *traqbot.JoinedPayload) {
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
 	m := ":oisu-1::oisu-2::oisu-3::oisu-4yoko:"
-	bot.SendMessage(payload.Channel.ID, m)
+	bot.SendMessage(payload.Channel.ID, m, false)
 }
 
 // LEFT
@@ -29,7 +29,7 @@ func (bot *Bot) LeftHandler(payload *traqbot.LeftPayload) {
 	log.Infof("チャンネル名: %s", payload.Channel.Name)
 	log.Infof("チャンネルID: %s", payload.Channel.ID)
 	m := ":leaves:"
-	bot.SendMessage(payload.Channel.ID, m)
+	bot.SendMessage(payload.Channel.ID, m, false)
 }
 
 // MESSAGE_CREATED
