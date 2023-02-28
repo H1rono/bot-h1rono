@@ -13,6 +13,7 @@ import (
 type SayRequest struct {
 	Content   string `json:"content"`
 	ChannelId string `json:"channelId,omitempty"`
+	Embed     bool   `json:"embed"`
 }
 
 func Say(c echo.Context, b *bot.Bot) error {
@@ -33,6 +34,6 @@ func Say(c echo.Context, b *bot.Bot) error {
 	if len(cid) == 0 {
 		cid = b.LogChannelId
 	}
-	b.SendMessage(cid, payload.Content, false)
+	b.SendMessage(cid, payload.Content, payload.Embed)
 	return c.NoContent(http.StatusCreated)
 }
