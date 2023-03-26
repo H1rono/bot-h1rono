@@ -32,7 +32,7 @@
 - `:oisu-*:` → :oisu-2::oisu-ho::oisu-3::oisu-ri::oisu-bo::oisu-1::oisu-he::oisu-tu::oisu-cat1::oisu-ra::oisu-iteraton_mark::oisu-4::oisu-::oisu-ten::oisu-dakuten::oisu-4yoko::oisu-si::oisu-kyurun::oisu-ko::oisu-cat2::oisu-cat3::oisu-yo:
 - `:oisu-+:` → :oisu-ra::oisu-cat1::oisu-4yoko::oisu-he::oisu-bo::oisu-si::oisu-cat2::oisu-yo::oisu-ko::oisu-3::oisu-dakuten::oisu-cat3::oisu-1::oisu-2::oisu-iteraton_mark::oisu-ten::oisu-kyurun::oisu-tu::oisu-ho::oisu-4::oisu-ri:
 
-また、`:random[お好みでエフェクト]`の場合はスタンプを1つランダムに返信します。
+また、`:random[お好みでエフェクト]:`の場合はスタンプを1つランダムに返信します。
 
 ## その他
 
