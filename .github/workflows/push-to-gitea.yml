@@ -6,6 +6,10 @@ on:
     branches:
       - "main"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   GITEA_SSH_URL: "ssh://git@git.trap.jp:2200/H1rono_K/bot-h1rono.git"
 
