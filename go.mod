@@ -1,6 +1,6 @@
 module github.com/H1rono/bot-h1rono
 
-go 1.19
+go 1.20
 
 require (
 	github.com/labstack/echo/v4 v4.10.0
