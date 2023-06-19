@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"math/rand"
 	"os"
 	"reflect"
 	"strings"
@@ -24,9 +23,6 @@ func (bot *Bot) StampPatternMatch(message *traqbot.MessagePayload) {
 	if len(patterns) == 0 {
 		return
 	}
-	rand.Shuffle(len(bot.stamps), func(i, j int) {
-		bot.stamps[i], bot.stamps[j] = bot.stamps[j], bot.stamps[i]
-	})
 	result := make([]string, 0, MAX_STAMPS)
 	lenStamps := 0
 	lenMessage := 0

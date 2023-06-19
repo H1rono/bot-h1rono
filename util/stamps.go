@@ -86,5 +86,9 @@ func PickStamps(pattern string, stamps Stamps) []string {
 		s := fmt.Sprintf(":%s%s:", b, effect)
 		return []string{s}
 	}
-	return FindAllStamps(pattern, stamps)
+	s := FindAllStamps(pattern, stamps)
+	rand.Shuffle(len(s), func(i, j int) {
+		s[i], s[j] = s[j], s[i]
+	})
+	return s
 }
