@@ -1,0 +1,22 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended"
+    ],
+    "timezone": "Asia/Tokyo",
+    "prHourlyLimit": 10,
+    "ignoreTests": true,
+    "schedule": [
+        "after 8am on wednesday",
+        "before 10am on wednesday"
+    ],
+    "packageRules": [
+        {
+            "matchDepTypes": [
+                "action"
+            ],
+            "groupName": "github-actions",
+            "automerge": true
+        }
+    ]
+}
