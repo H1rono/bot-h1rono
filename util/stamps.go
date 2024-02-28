@@ -18,7 +18,7 @@ var (
 )
 
 func FetchStamps(client *traq.APIClient, auth context.Context) Stamps {
-	s, r, err := client.StampApi.
+	rs, r, err := client.StampApi.
 		GetStamps(auth).
 		IncludeUnicode(true).
 		Execute()
@@ -26,6 +26,19 @@ func FetchStamps(client *traq.APIClient, auth context.Context) Stamps {
 		log.Error(err)
 	}
 	LogResponse(r)
+	var s Stamps
+	for _, rstamp := range rs {
+		stamp := traq.Stamp{
+			Id:        rstamp.Id,
+			Name:      rstamp.Name,
+			CreatorId: rstamp.CreatorId,
+			CreatedAt: rstamp.CreatedAt,
+			UpdatedAt: rstamp.UpdatedAt,
+			FileId:    rstamp.FileId,
+			IsUnicode: rstamp.IsUnicode,
+		}
+		s = append(s, stamp)
+	}
 	return s
 }
 
