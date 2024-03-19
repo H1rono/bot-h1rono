@@ -6,7 +6,7 @@ require (
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/sirupsen/logrus v1.9.3
 	github.com/traPtitech/go-traq v0.0.0-20240224021219-538059ee2fa7
-	github.com/traPtitech/traq-bot v1.0.2
+	github.com/traPtitech/traq-bot v1.0.3
 )
 
 require (
