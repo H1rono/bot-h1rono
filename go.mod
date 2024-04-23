@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/sirupsen/logrus v1.9.3
-	github.com/traPtitech/go-traq v0.0.0-20240224021219-538059ee2fa7
+	github.com/traPtitech/go-traq v0.0.0-20240420012203-0152d96098b0
 	github.com/traPtitech/traq-bot v1.0.3
 )
 
@@ -22,5 +22,5 @@ require (
 	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/protobuf v1.31.0 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 )
