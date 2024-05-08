@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/sirupsen/logrus v1.9.3
-	github.com/traPtitech/go-traq v0.0.0-20240420012203-0152d96098b0
+	github.com/traPtitech/go-traq v0.0.0-20240508062823-763eb29458cb
 	github.com/traPtitech/traq-bot v1.0.3
 )
 
