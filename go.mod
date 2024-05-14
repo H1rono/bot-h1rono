@@ -1,11 +1,13 @@
 module github.com/H1rono/bot-h1rono
 
-go 1.20
+go 1.22
+
+toolchain go1.22.3
 
 require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/sirupsen/logrus v1.9.3
-	github.com/traPtitech/go-traq v0.0.0-20240508062823-763eb29458cb
+	github.com/traPtitech/go-traq v0.0.0-20240509050113-9343acbeec35
 	github.com/traPtitech/traq-bot v1.0.3
 )
 
@@ -18,7 +20,7 @@ require (
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/net v0.24.0 // indirect
-	golang.org/x/oauth2 v0.10.0 // indirect
+	golang.org/x/oauth2 v0.20.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
