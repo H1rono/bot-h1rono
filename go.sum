@@ -51,6 +51,8 @@ github.com/traPtitech/go-traq v0.0.0-20240703100018-fe84102930d1 h1:C8om5/7yybuz
 github.com/traPtitech/go-traq v0.0.0-20240703100018-fe84102930d1/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
 github.com/traPtitech/go-traq v0.0.0-20240704021743-2b3cb01f5911 h1:9wpsbtmHBMYx2A0WLq9TqdlE1ooOzxL/qBfJQsvtbPg=
 github.com/traPtitech/go-traq v0.0.0-20240704021743-2b3cb01f5911/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
+github.com/traPtitech/go-traq v0.0.0-20240712005929-c85e8e2b0c27 h1:rkGeTqC/iFJzhnpuSgiHD7/HOmcs8+koaINLGkOARnE=
+github.com/traPtitech/go-traq v0.0.0-20240712005929-c85e8e2b0c27/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
 github.com/traPtitech/traq-bot v1.0.2 h1:Dz2ZeSTC7QOo8/bOBAMODYUF46/MSdDJ//ubBAhrGMw=
 github.com/traPtitech/traq-bot v1.0.2/go.mod h1:H8NDXjWI9isEJNMXaGUr4/g4JeqThr7Mt3dNmVTW/fs=
 github.com/traPtitech/traq-bot v1.0.3 h1:/adgQ8kqLvArR4c8VoJvAKEn36f5SyyxBSDUotWJcJ0=
