@@ -22,6 +22,8 @@ github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcU
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/traPtitech/go-traq v0.0.0-20240712005929-c85e8e2b0c27 h1:rkGeTqC/iFJzhnpuSgiHD7/HOmcs8+koaINLGkOARnE=
 github.com/traPtitech/go-traq v0.0.0-20240712005929-c85e8e2b0c27/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
+github.com/traPtitech/go-traq v0.0.0-20240723024800-9f0fbede9a28 h1:4ISO01YigVGBD6EWM3T44Ok80TOiKO0uWDqH5zSxxLk=
+github.com/traPtitech/go-traq v0.0.0-20240723024800-9f0fbede9a28/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
 github.com/traPtitech/traq-bot v1.0.3 h1:/adgQ8kqLvArR4c8VoJvAKEn36f5SyyxBSDUotWJcJ0=
 github.com/traPtitech/traq-bot v1.0.3/go.mod h1:H8NDXjWI9isEJNMXaGUr4/g4JeqThr7Mt3dNmVTW/fs=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=
