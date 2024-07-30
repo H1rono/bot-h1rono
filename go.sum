@@ -28,6 +28,8 @@ github.com/traPtitech/go-traq v0.0.0-20240723174334-0fdd8e79d9ac h1:zZ79wgUMnPmd
 github.com/traPtitech/go-traq v0.0.0-20240723174334-0fdd8e79d9ac/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
 github.com/traPtitech/go-traq v0.0.0-20240723215239-7622b89fcb33 h1:xYVN9ljsLNPeOn2CERuyXU1NomJlaCvtT2qwd4oyL6w=
 github.com/traPtitech/go-traq v0.0.0-20240723215239-7622b89fcb33/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
+github.com/traPtitech/go-traq v0.0.0-20240725071454-97c7b85dc879 h1:kkMhrXZXa7aP57ay31a3AydSPcDU1K73vXRYrSPs+P8=
+github.com/traPtitech/go-traq v0.0.0-20240725071454-97c7b85dc879/go.mod h1:7yJs1m/ddCG39XF78GA8FrXqyc4fNPfHp8BSLjMVMY8=
 github.com/traPtitech/traq-bot v1.0.3 h1:/adgQ8kqLvArR4c8VoJvAKEn36f5SyyxBSDUotWJcJ0=
 github.com/traPtitech/traq-bot v1.0.3/go.mod h1:H8NDXjWI9isEJNMXaGUr4/g4JeqThr7Mt3dNmVTW/fs=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=
