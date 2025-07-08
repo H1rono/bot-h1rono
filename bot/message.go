@@ -60,12 +60,12 @@ func (bot *Bot) JudgeMessageType(message *traqbot.MessagePayload) MessageType {
 func (bot *Bot) SendMessage(cid string, msg string, embed bool) {
 	req := traq.NewPostMessageRequest(msg)
 	req.Embed = &embed
-	m, r, err := bot.client.MessageApi.
+	m, r, err := bot.client.MessageAPI.
 		PostMessage(bot.auth, cid).
 		PostMessageRequest(*req).
 		Execute()
 	if err != nil {
-		bot.client.MessageApi.
+		bot.client.MessageAPI.
 			PostMessage(bot.auth, cid).
 			PostMessageRequest(*traq.NewPostMessageRequest(FALLBACK_MESSAGE)).
 			Execute()

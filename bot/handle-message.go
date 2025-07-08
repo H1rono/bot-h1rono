@@ -64,7 +64,7 @@ func (bot *Bot) HandleNormalMessage(message *traqbot.MessagePayload) {
 
 func (bot *Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleJoinMessageでメッセージを処理")
-	r, err := bot.client.BotApi.
+	r, err := bot.client.BotAPI.
 		LetBotJoinChannel(bot.auth, bot.Id).
 		PostBotActionJoinRequest(*traq.NewPostBotActionJoinRequest(message.ChannelID)).
 		Execute()
@@ -76,7 +76,7 @@ func (bot *Bot) HandleJoinMessage(message *traqbot.MessagePayload) {
 
 func (bot *Bot) HandleLeaveMessage(message *traqbot.MessagePayload) {
 	log.Trace("HandleLeaveMessageでメッセージを処理")
-	r, err := bot.client.BotApi.
+	r, err := bot.client.BotAPI.
 		LetBotLeaveChannel(bot.auth, bot.Id).
 		PostBotActionLeaveRequest(*traq.NewPostBotActionLeaveRequest(message.ChannelID)).
 		Execute()

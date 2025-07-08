@@ -18,7 +18,7 @@ var (
 )
 
 func FetchStamps(client *traq.APIClient, auth context.Context) Stamps {
-	rs, r, err := client.StampApi.
+	rs, r, err := client.StampAPI.
 		GetStamps(auth).
 		IncludeUnicode(true).
 		Execute()
