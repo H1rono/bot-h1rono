@@ -73,7 +73,7 @@ func (bot *Bot) StampCreated(payload *traqbot.StampCreatedPayload) {
 		log.Infof("イベントペイロード: %s", j)
 	}
 	stampId := payload.ID
-	stamp, r, err := bot.client.StampApi.GetStamp(bot.auth, stampId).Execute()
+	stamp, r, err := bot.client.StampAPI.GetStamp(bot.auth, stampId).Execute()
 	if err != nil {
 		log.Errorf("Error while GetStamp: %v", err)
 	}
