@@ -7,7 +7,7 @@ toolchain go1.24.5
 require (
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/sirupsen/logrus v1.9.3
-	github.com/traPtitech/go-traq v0.0.0-20250705130218-99025a7686aa
+	github.com/traPtitech/go-traq v0.0.0-20250819014447-0a9ace963ef6
 	github.com/traPtitech/traq-bot v1.0.3
 )
 
