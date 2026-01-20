@@ -2,7 +2,7 @@ module github.com/H1rono/bot-h1rono
 
 go 1.24.0
 
-toolchain go1.25.5
+toolchain go1.25.6
 
 require (
 	github.com/labstack/echo/v4 v4.15.0
