@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/H1rono/bot-h1rono/api"

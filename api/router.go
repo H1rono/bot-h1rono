@@ -6,15 +6,15 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	traqbot "github.com/traPtitech/traq-bot"
 
 	"github.com/H1rono/bot-h1rono/bot"
 )
 
-func MakeBotHandler(vt string, handlers traqbot.EventHandlers) func(c echo.Context) error {
+func MakeBotHandler(vt string, handlers traqbot.EventHandlers) func(c *echo.Context) error {
 	// https://github.com/traPtitech/traq-bot/blob/a4242da6299790b6f5d1cac6afd7ea351a7ce852/server.go#L45-L114
-	return func(c echo.Context) error {
+	return func(c *echo.Context) error {
 		req := c.Request()
 		// VerificationTokenチェック
 		if req.Header.Get("X-TRAQ-BOT-TOKEN") != vt {
@@ -80,17 +80,17 @@ func MakeBotHandler(vt string, handlers traqbot.EventHandlers) func(c echo.Conte
 func SetRouting(e *echo.Echo, b *bot.Bot) {
 	e.POST("/bot", MakeBotHandler(b.VerificationToken, b.MakeHandlers()))
 	api := e.Group("/api")
-	api.GET("/ping", func(c echo.Context) error {
+	api.GET("/ping", func(c *echo.Context) error {
 		return c.String(http.StatusOK, "pong")
 	})
-	api.GET("/echo", func(c echo.Context) error {
+	api.GET("/echo", func(c *echo.Context) error {
 		header := fmt.Sprintf("%#v", c.Request().Header)
 		return c.String(http.StatusOK, header)
 	})
-	api.POST("/say", func(c echo.Context) error {
+	api.POST("/say", func(c *echo.Context) error {
 		return Say(c, b)
 	})
-	api.POST("/stamps/update", func(c echo.Context) error {
+	api.POST("/stamps/update", func(c *echo.Context) error {
 		return UpdateStamps(c, b)
 	})
 }

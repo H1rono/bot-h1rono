@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/H1rono/bot-h1rono/bot"
@@ -16,7 +16,7 @@ type SayRequest struct {
 	Embed     bool   `json:"embed"`
 }
 
-func Say(c echo.Context, b *bot.Bot) error {
+func Say(c *echo.Context, b *bot.Bot) error {
 	req := c.Request()
 	if req.Header.Get("X-TRAQ-BOT-TOKEN") != b.VerificationToken {
 		return c.NoContent(http.StatusForbidden)
